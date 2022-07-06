@@ -4,6 +4,7 @@ target
 **/avro/generated
 venv
 .envrc
+.DS_Store
 
 # Terraform
 **/.terraform/
