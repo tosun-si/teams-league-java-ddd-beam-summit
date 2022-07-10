@@ -1,10 +1,7 @@
 package fr.groupbees.domain;
 
 import fr.groupbees.domain.exception.TeamStatsRawValidatorException;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
+import lombok.*;
 
 import java.io.Serializable;
 import java.util.List;
@@ -13,19 +10,23 @@ import static java.util.Objects.isNull;
 
 @Builder
 @AllArgsConstructor
-@Getter
+@NoArgsConstructor
+@Data
 @EqualsAndHashCode
+@ToString
 public class TeamStatsRaw implements Serializable {
+
+    public static final String TEAM_EMPTY_ERROR_MESSAGE = "Team name cannot be null or empty";
 
     private String teamName;
     private int teamScore;
     private List<TeamScorerRaw> scorers;
 
-    public static TeamStatsRaw validateFields(final TeamStatsRaw teamStatsRaw) {
-        if (isNull(teamStatsRaw.getTeamName())) {
-            throw new TeamStatsRawValidatorException("Team name cannot be null");
+    public TeamStatsRaw validateFields() {
+        if (isNull(teamName) || teamName.equals("")) {
+            throw new TeamStatsRawValidatorException(TEAM_EMPTY_ERROR_MESSAGE);
         }
 
-        return teamStatsRaw;
+        return this;
     }
 }

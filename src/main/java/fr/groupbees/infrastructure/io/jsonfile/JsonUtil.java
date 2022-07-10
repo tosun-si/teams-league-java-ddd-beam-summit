@@ -54,4 +54,12 @@ public class JsonUtil {
             throw new IllegalStateException("Error Json deserialization");
         }
     }
+
+    public static <T> String serialize(T obj) {
+        try {
+            return OBJECT_MAPPER.writeValueAsString(obj);
+        } catch (JsonProcessingException e) {
+            throw new IllegalStateException("Error Json serialization");
+        }
+    }
 }

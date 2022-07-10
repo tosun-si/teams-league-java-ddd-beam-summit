@@ -7,31 +7,48 @@ import org.apache.beam.sdk.options.PipelineOptions;
 public interface TeamLeagueOptions extends PipelineOptions {
 
     @Description("Path of the file to read from")
-    @Default.String("gs://apache-beam-samples/shakespeare/kinglear.txt")
     String getInputFile();
 
     void setInputFile(String value);
 
-    @Description("Path of the file to read from")
+    @Description("File separator")
     @Default.Character(',')
     char getInputFileSeparator();
 
     void setInputFileSeparator(char value);
 
-    @Description("Path of the file to read from")
-    @Default.String("gs://apache-beam-samples/shakespeare/kinglear.txt")
+    @Description("Topic input subscription")
     String getInputSubscription();
 
     void setInputSubscription(String value);
 
     @Description("Path of the file to write to")
-    String getOutputDataset();
+    String getTeamLeagueDataset();
 
-    void setOutputDataset(String value);
+    void setTeamLeagueDataset(String value);
 
-    @Description("Path of the file to write to")
-        // @Validation.Required
-    String getOutputTable();
+    @Description("Team stats table")
+    String getTeamStatsTable();
 
-    void setOutputTable(String value);
+    void setTeamStatsTable(String value);
+
+    @Description("Job type")
+    String getJobType();
+
+    void setJobType(String value);
+
+    @Description("Failure output dataset")
+    String getFailureOutputDataset();
+
+    void setFailureOutputDataset(String value);
+
+    @Description("Failure output table")
+    String getFailureOutputTable();
+
+    void setFailureOutputTable(String value);
+
+    @Description("Feature name for failures")
+    String getFailureFeatureName();
+
+    void setFailureFeatureName(String value);
 }

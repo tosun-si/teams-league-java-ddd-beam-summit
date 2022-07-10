@@ -5,16 +5,15 @@ import lombok.*;
 import java.io.Serializable;
 
 @Builder
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 @Data
 @EqualsAndHashCode
 @ToString
-public class TeamScorerRaw implements Serializable {
+public class TeamTopScorerStats implements Serializable {
 
-    private String scorerFirstName;
-    private String scorerLastName;
+    private String firstName;
+    private String lastName;
     private int goals;
-    private int goalAssists;
     private int games;
 }

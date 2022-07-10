@@ -1,4 +1,4 @@
-package fr.groupbees.infrastructure.io.inmemory;
+package fr.groupbees.infrastructure.io.mock;
 
 import fr.groupbees.domain.*;
 import fr.groupbees.domain_transform.TeamStatsInMemoryIOConnector;
@@ -8,14 +8,14 @@ import org.apache.beam.sdk.values.PCollection;
 
 import javax.inject.Inject;
 
-public class TeamStatsInMemoryIOAdapter implements TeamStatsInMemoryIOConnector {
+public class TeamStatsMockIOAdapter implements TeamStatsInMemoryIOConnector {
 
     @Inject
-    public TeamStatsInMemoryIOAdapter() {
+    public TeamStatsMockIOAdapter() {
     }
 
     @Override
     public PTransform<PBegin, PCollection<TeamStatsRaw>> read() {
-        return new TeamStatsInMemoryReadTransform();
+        return new TeamStatsMockReadTransform();
     }
 }
