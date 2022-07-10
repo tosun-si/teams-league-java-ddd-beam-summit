@@ -1,21 +1,27 @@
 package fr.groupbees.application;
 
+import org.apache.beam.sdk.io.gcp.bigquery.BigQueryIO;
 import org.apache.beam.sdk.options.Default;
+import org.apache.beam.sdk.options.Default.Enum;
 import org.apache.beam.sdk.options.Description;
 import org.apache.beam.sdk.options.PipelineOptions;
 
 public interface TeamLeagueOptions extends PipelineOptions {
 
-    @Description("Path of the file to read from")
-    String getInputFile();
+    @Description("Path of the input Json file to read from")
+    String getInputJsonFile();
 
-    void setInputFile(String value);
+    void setInputJsonFile(String value);
 
-    @Description("File separator")
-    @Default.Character(',')
-    char getInputFileSeparator();
+    @Description("Path of the input CSV file to read from")
+    String getInputCsvFile();
 
-    void setInputFileSeparator(char value);
+    void setInputCsvFile(String value);
+
+    @Description("File separator for CSV file")
+    String getInputFileSeparator();
+
+    void setInputFileSeparator(String value);
 
     @Description("Topic input subscription")
     String getInputSubscription();
@@ -32,23 +38,10 @@ public interface TeamLeagueOptions extends PipelineOptions {
 
     void setTeamStatsTable(String value);
 
-    @Description("Job type")
-    String getJobType();
+    @Description("BQ write method")
+    @Default
+    @Enum("FILE_LOADS")
+    BigQueryIO.Write.Method getBqWriteMethod();
 
-    void setJobType(String value);
-
-    @Description("Failure output dataset")
-    String getFailureOutputDataset();
-
-    void setFailureOutputDataset(String value);
-
-    @Description("Failure output table")
-    String getFailureOutputTable();
-
-    void setFailureOutputTable(String value);
-
-    @Description("Feature name for failures")
-    String getFailureFeatureName();
-
-    void setFailureFeatureName(String value);
+    void setBqWriteMethod(BigQueryIO.Write.Method value);
 }

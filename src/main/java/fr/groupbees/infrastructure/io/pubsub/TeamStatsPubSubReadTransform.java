@@ -1,6 +1,6 @@
 package fr.groupbees.infrastructure.io.pubsub;
 
-import fr.groupbees.application.TeamLeagueOptions;
+import fr.groupbees.infrastructure.io.PipelineConf;
 import fr.groupbees.domain.TeamStatsRaw;
 import fr.groupbees.infrastructure.io.jsonfile.JsonUtil;
 import org.apache.beam.sdk.io.gcp.pubsub.PubsubIO;
@@ -13,16 +13,16 @@ import static org.apache.beam.sdk.values.TypeDescriptor.of;
 
 public class TeamStatsPubSubReadTransform extends PTransform<PBegin, PCollection<TeamStatsRaw>> {
 
-    private final TeamLeagueOptions options;
+    private final PipelineConf pipelineConf;
 
-    public TeamStatsPubSubReadTransform(TeamLeagueOptions options) {
-        this.options = options;
+    public TeamStatsPubSubReadTransform(PipelineConf pipelineConf) {
+        this.pipelineConf = pipelineConf;
     }
 
     @Override
     public PCollection<TeamStatsRaw> expand(PBegin input) {
         return input
-                .apply("Read Json file", PubsubIO.readStrings().fromSubscription(options.getInputSubscription()))
+                .apply("Read Json file", PubsubIO.readStrings().fromSubscription(pipelineConf.getInputSubscription()))
                 .apply("Deserialize", MapElements.into(of(TeamStatsRaw.class)).via(this::deserializeToTeamStats));
     }
 

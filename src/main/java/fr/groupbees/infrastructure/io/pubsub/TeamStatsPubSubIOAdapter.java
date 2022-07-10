@@ -1,6 +1,6 @@
 package fr.groupbees.infrastructure.io.pubsub;
 
-import fr.groupbees.application.TeamLeagueOptions;
+import fr.groupbees.infrastructure.io.PipelineConf;
 import fr.groupbees.domain.TeamStatsRaw;
 import fr.groupbees.domain_transform.TeamStatsTopicIOConnector;
 import org.apache.beam.sdk.transforms.PTransform;
@@ -11,15 +11,15 @@ import javax.inject.Inject;
 
 public class TeamStatsPubSubIOAdapter implements TeamStatsTopicIOConnector {
 
-    private final TeamLeagueOptions options;
+    private final PipelineConf pipelineConf;
 
     @Inject
-    public TeamStatsPubSubIOAdapter(TeamLeagueOptions options) {
-        this.options = options;
+    public TeamStatsPubSubIOAdapter(PipelineConf pipelineConf) {
+        this.pipelineConf = pipelineConf;
     }
 
     @Override
     public PTransform<PBegin, PCollection<TeamStatsRaw>> read() {
-        return new TeamStatsPubSubReadTransform(options);
+        return new TeamStatsPubSubReadTransform(pipelineConf);
     }
 }

@@ -1,11 +1,11 @@
 package fr.groupbees.infrastructure.io.bigquery;
 
 import com.google.api.services.bigquery.model.TableRow;
-import fr.groupbees.application.TeamLeagueOptions;
 import fr.groupbees.domain.TeamBestPasserStats;
 import fr.groupbees.domain.TeamStats;
 import fr.groupbees.domain.TeamTopScorerStats;
 import fr.groupbees.domain_transform.TeamStatsDatabaseIOConnector;
+import fr.groupbees.infrastructure.io.PipelineConf;
 import org.apache.beam.sdk.io.gcp.bigquery.BigQueryIO;
 import org.joda.time.Instant;
 
@@ -13,18 +13,18 @@ import javax.inject.Inject;
 
 public class TeamStatsBigQueryIOAdapter implements TeamStatsDatabaseIOConnector {
 
-    private final TeamLeagueOptions options;
+    private final PipelineConf pipelineConf;
 
     @Inject
-    public TeamStatsBigQueryIOAdapter(TeamLeagueOptions options) {
-        this.options = options;
+    public TeamStatsBigQueryIOAdapter(PipelineConf pipelineConf) {
+        this.pipelineConf = pipelineConf;
     }
 
     @Override
     public BigQueryIO.Write<TeamStats> write() {
         return BigQueryIO.<TeamStats>write()
-                .withMethod(BigQueryIO.Write.Method.FILE_LOADS)
-                .to(options.getTeamLeagueDataset() + "." + options.getTeamStatsTable())
+                .withMethod(pipelineConf.getBqWriteMethod())
+                .to(pipelineConf.getTeamLeagueDataset() + "." + pipelineConf.getTeamStatsTable())
                 .withFormatFunction(TeamStatsBigQueryIOAdapter::toTeamStatsTableRow)
                 .withCreateDisposition(BigQueryIO.Write.CreateDisposition.CREATE_NEVER)
                 .withWriteDisposition(BigQueryIO.Write.WriteDisposition.WRITE_APPEND);
