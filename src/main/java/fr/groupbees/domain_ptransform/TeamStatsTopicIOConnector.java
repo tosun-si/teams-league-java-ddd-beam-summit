@@ -1,4 +1,4 @@
-package fr.groupbees.domain_transform;
+package fr.groupbees.domain_ptransform;
 
 import fr.groupbees.domain.TeamStatsRaw;
 import org.apache.beam.sdk.transforms.PTransform;

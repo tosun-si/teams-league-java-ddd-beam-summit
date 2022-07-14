@@ -1,8 +1,8 @@
 package fr.groupbees.infrastructure.io.csvfile;
 
-import fr.groupbees.infrastructure.io.PipelineConf;
+import fr.groupbees.application.PipelineConf;
 import fr.groupbees.domain.TeamStatsRaw;
-import fr.groupbees.domain_transform.TeamStatsFileIOConnector;
+import fr.groupbees.domain_ptransform.TeamStatsFileIOConnector;
 import org.apache.beam.sdk.transforms.PTransform;
 import org.apache.beam.sdk.values.PBegin;
 import org.apache.beam.sdk.values.PCollection;

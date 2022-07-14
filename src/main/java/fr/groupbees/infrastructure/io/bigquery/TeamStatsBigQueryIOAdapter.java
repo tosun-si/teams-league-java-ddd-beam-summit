@@ -4,8 +4,8 @@ import com.google.api.services.bigquery.model.TableRow;
 import fr.groupbees.domain.TeamBestPasserStats;
 import fr.groupbees.domain.TeamStats;
 import fr.groupbees.domain.TeamTopScorerStats;
-import fr.groupbees.domain_transform.TeamStatsDatabaseIOConnector;
-import fr.groupbees.infrastructure.io.PipelineConf;
+import fr.groupbees.domain_ptransform.TeamStatsDatabaseIOConnector;
+import fr.groupbees.application.PipelineConf;
 import org.apache.beam.sdk.io.gcp.bigquery.BigQueryIO;
 import org.joda.time.Instant;
 

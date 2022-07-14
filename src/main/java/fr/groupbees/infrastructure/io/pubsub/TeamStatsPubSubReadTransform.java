@@ -1,6 +1,6 @@
 package fr.groupbees.infrastructure.io.pubsub;
 
-import fr.groupbees.infrastructure.io.PipelineConf;
+import fr.groupbees.application.PipelineConf;
 import fr.groupbees.domain.TeamStatsRaw;
 import fr.groupbees.infrastructure.io.jsonfile.JsonUtil;
 import org.apache.beam.sdk.io.gcp.pubsub.PubsubIO;

@@ -1,4 +1,4 @@
-package fr.groupbees.domain_transform;
+package fr.groupbees.domain_ptransform;
 
 import fr.groupbees.domain.TeamStats;
 import fr.groupbees.domain.TeamStatsRaw;

@@ -1,7 +1,7 @@
 package fr.groupbees.infrastructure.io.mock;
 
 import fr.groupbees.domain.*;
-import fr.groupbees.domain_transform.TeamStatsInMemoryIOConnector;
+import fr.groupbees.domain_ptransform.TeamStatsInMemoryIOConnector;
 import org.apache.beam.sdk.transforms.PTransform;
 import org.apache.beam.sdk.values.PBegin;
 import org.apache.beam.sdk.values.PCollection;

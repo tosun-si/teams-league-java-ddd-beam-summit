@@ -2,10 +2,10 @@ package fr.groupbees.injection;
 
 import dagger.Binds;
 import dagger.Module;
-import fr.groupbees.domain_transform.TeamStatsDatabaseIOConnector;
-import fr.groupbees.domain_transform.TeamStatsFileIOConnector;
-import fr.groupbees.domain_transform.TeamStatsInMemoryIOConnector;
-import fr.groupbees.domain_transform.TeamStatsTopicIOConnector;
+import fr.groupbees.domain_ptransform.TeamStatsDatabaseIOConnector;
+import fr.groupbees.domain_ptransform.TeamStatsFileIOConnector;
+import fr.groupbees.domain_ptransform.TeamStatsInMemoryIOConnector;
+import fr.groupbees.domain_ptransform.TeamStatsTopicIOConnector;
 import fr.groupbees.infrastructure.io.bigquery.TeamStatsBigQueryIOAdapter;
 import fr.groupbees.infrastructure.io.jsonfile.TeamStatsJsonFileIOAdapter;
 import fr.groupbees.infrastructure.io.mock.TeamStatsMockIOAdapter;

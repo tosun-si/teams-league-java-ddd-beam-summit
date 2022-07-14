@@ -1,6 +1,6 @@
 package fr.groupbees.application;
 
-import fr.groupbees.domain_transform.*;
+import fr.groupbees.domain_ptransform.*;
 import org.apache.beam.sdk.Pipeline;
 
 import javax.inject.Inject;
