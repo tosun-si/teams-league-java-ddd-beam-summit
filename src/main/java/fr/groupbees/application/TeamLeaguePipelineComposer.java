@@ -25,7 +25,7 @@ public class TeamLeaguePipelineComposer {
 
     public Pipeline compose(final Pipeline pipeline) {
         pipeline.apply("Read team stats", fileIOConnector.read())
-                .apply("name", new TeamStatsTransform())
+                .apply("Team stats domain transform", new TeamStatsTransform())
                 .apply("Write to database", databaseIOConnector.write());
 
         return pipeline;
